@@ -17,12 +17,12 @@ async function sendWithTrapMail() {
   
   try {
     await client
-    .send({
-      from: sender,
-      to: [{ email: 'pozdniakovkyryl@gmail.com' }],
-      subject: "Hello from Mailtrap!",
-      text: "Welcome to Mailtrap Sending!",
-    })
+      .send({
+        from: sender,
+        to: [{ email: 'pozdniakovkyryl@gmail.com' }],
+        subject: "Hello from Mailtrap!",
+        text: "Welcome to Mailtrap Sending!",
+      })
   } catch (error) {
     console.log(error);
   }
@@ -36,7 +36,7 @@ async function senWithNodemailer() {
     secure: false,
     auth: {
       user: 'sender.email.supp@gmail.com',
-      pass: 'aqpibxwastseofs'
+      pass: 'syoognyxzxkrbeqh'
     }
   })
 
