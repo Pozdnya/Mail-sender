@@ -29,7 +29,34 @@ async function sendWithTrapMail() {
 }
 
 
-async function senWithNodemailer() {
+async function sendWithNodemailer() {
+  const transporter = nodemailer.createTransport({
+    host: 'live.smtp.mailtrap.io',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'api',
+      pass: 'b342ac29b797a460e09faf770f1d3afd'
+    }
+  })
+
+  try {
+    const info =  await transporter.sendMail({
+      from: 'sender.email.supp@gmail.com', // sender address
+      to: "pozdniakovkyryl@gmail.com'", // list of receivers
+      subject: "Hello ✔", // Subject line
+      text: "Hello world?", // plain text body
+      html: "<b>Hello world?</b>", // html body
+    });
+  
+    console.log(info.messageId);
+    
+  } catch (error) {
+    console.log('error sendWithNodemailer', error)
+  }
+}
+
+async function sendWith2FANodemailer() {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -49,12 +76,13 @@ async function senWithNodemailer() {
       html: "<b>Hello world?</b>", // html body
     });
   
-    console.log(info.messageId);
+    console.log('sendWith2FANodemailer', info.messageId);
     
   } catch (error) {
-    console.log('error', error)
+    console.log('error sendWith2FANodemailer', error)
   }
 }
 
 sendWithTrapMail()
-senWithNodemailer()
+sendWithNodemailer()
+sendWith2FANodemailer()
