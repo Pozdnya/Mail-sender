@@ -15,18 +15,19 @@ async function sendWithTrapMail() {
 
   const sender = { email: 'sender.email.supp@gmail.com' };
   
- return client
+  try {
+    await client
     .send({
       from: sender,
       to: [{ email: 'pozdniakovkyryl@gmail.com' }],
       subject: "Hello from Mailtrap!",
       text: "Welcome to Mailtrap Sending!",
     })
-    .then(console.log)
-    .catch(console.error);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-sendWithTrapMail()
 
 async function senWithNodemailer() {
   const transporter = nodemailer.createTransport({
@@ -55,4 +56,5 @@ async function senWithNodemailer() {
   }
 }
 
-// senWithNodemailer()
+sendWithTrapMail()
+senWithNodemailer()
