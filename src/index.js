@@ -83,6 +83,10 @@ async function sendWith2FANodemailer() {
   }
 }
 
-sendWithTrapMail()
-sendWithNodemailer()
-sendWith2FANodemailer()
+async function main() {
+  await sendWithTrapMail()
+  // await sendWithNodemailer()
+  // await sendWith2FANodemailer()
+}
+
+main()
