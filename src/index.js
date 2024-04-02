@@ -10,11 +10,11 @@ import { MailtrapClient } from "mailtrap";
 // const SENDER_EMAIL = "<SENDER@YOURDOMAIN.COM>";
 // const RECIPIENT_EMAIL = "<RECIPIENT@EMAIL.COM>";
 
-async function sendWithTrapMail() {
+async function sendWithMailTrap() {
   const client = new MailtrapClient({ token: 'b342ac29b797a460e09faf770f1d3afd' });
 
   const sender = { email: 'sender.email.supp@gmail.com' };
-  
+
   try {
     await client
       .send({
@@ -29,28 +29,27 @@ async function sendWithTrapMail() {
 }
 
 
-async function sendWithNodemailer() {
+async function sendWithNodemailer() { // send with nodemailer and mailtrap
   const transporter = nodemailer.createTransport({
-    host: 'live.smtp.mailtrap.io',
-    port: 587,
-    secure: false,
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
     auth: {
-      user: 'api',
-      pass: 'b342ac29b797a460e09faf770f1d3afd'
+      user: "49295814a1a65c",
+      pass: "b342ac29b797a460e09faf770f1d3afd"
     }
   })
 
   try {
-    const info =  await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: 'sender.email.supp@gmail.com', // sender address
       to: "pozdniakovkyryl@gmail.com'", // list of receivers
       subject: "Hello ✔", // Subject line
       text: "Hello world?", // plain text body
       html: "<b>Hello world?</b>", // html body
     });
-  
+
     console.log(info.messageId);
-    
+
   } catch (error) {
     console.log('error sendWithNodemailer', error)
   }
@@ -68,25 +67,25 @@ async function sendWith2FANodemailer() {
   })
 
   try {
-    const info =  await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: 'sender.email.supp@gmail.com', // sender address
       to: "pozdniakovkyryl@gmail.com'", // list of receivers
       subject: "Hello ✔", // Subject line
       text: "Hello world?", // plain text body
       html: "<b>Hello world?</b>", // html body
     });
-  
+
     console.log('sendWith2FANodemailer', info.messageId);
-    
+
   } catch (error) {
     console.log('error sendWith2FANodemailer', error)
   }
 }
 
 async function main() {
-  await sendWithTrapMail()
+  // await sendWithMailTrap()
   // await sendWithNodemailer()
-  // await sendWith2FANodemailer()
+  await sendWith2FANodemailer()
 }
 
 main()
