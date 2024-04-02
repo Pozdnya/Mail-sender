@@ -62,7 +62,7 @@ async function sendWith2FANodemailer() {
     secure: false,
     auth: {
       user: 'sender.email.supp@gmail.com',
-      pass: 'syoognyxzxkrbeqh'
+      pass: 'udpjasyqpnqnonra'
     }
   })
 
